@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Anonymous Messages</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            transform: translateY(0);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            min-height: 150px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        #status {
+            margin-top: 15px;
+            text-align: center;
+            color: #4CAF50;
+            font-weight: 500;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            textarea {
+                min-height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Send Me Anonymous Messages</h2>
+        <form action="https://formsubmit.co/janleilimpao12@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Anonymous Message!">
+            <textarea name="message" placeholder="Type your message here..." required></textarea>
+            <button type="submit">Send Secretly</button>
+        </form>
+        <p id="status"></p>
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+        const button = document.querySelector('button');
+        
+        form.addEventListener('submit', (e) => {
+            document.getElementById('status').textContent = "Sending...";
+            button.style.opacity = '0.7';
+            button.disabled = true;
+        });
+
+        // Animation for textarea focus
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('focus', () => {
+            textarea.style.transform = 'scale(1.01)';
+        });
+        textarea.addEventListener('blur', () => {
+            textarea.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
